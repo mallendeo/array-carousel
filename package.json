@@ -1,13 +1,12 @@
 {
-	"name": "negative-array",
-	"version": "2.0.1",
-	"description": "Negative array index support `array[-1]` using ES2015 Proxy",
+	"name": "array-carousel",
+	"version": "1.0.0",
+	"description": "Infinite and negative array index support `array[-1]` `array[array.length]` using ES2015 Proxy",
 	"license": "MIT",
-	"repository": "sindresorhus/negative-array",
+	"repository": "mallendeo/array-carousel",
 	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"name": "Mauricio Allende",
+		"url": "https://mallendeo.com"
 	},
 	"engines": {
 		"node": ">=6"
@@ -20,7 +19,9 @@
 	],
 	"keywords": [
 		"array",
-		"negative",
+		"circular",
+		"carousel",
+		"infinite",
 		"index",
 		"indice",
 		"reverse",
