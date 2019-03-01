@@ -1,38 +1,38 @@
-'use strict';
+'use strict'
 
 module.exports = input => {
-	if (!Array.isArray(input)) {
-		throw new TypeError('Expected an array');
-	}
+  if (!Array.isArray(input)) {
+    throw new TypeError('Expected an array')
+  }
 
-	return new Proxy(input, {
-		get(target, name, receiver) {
-			if (typeof name !== 'string') {
-				return Reflect.get(target, name, receiver);
-			}
+  return new Proxy(input, {
+    get(target, name, receiver) {
+      if (typeof name !== 'string') {
+        return Reflect.get(target, name, receiver)
+      }
 
-			const index = Number(name);
+      const index = Number(name % target.length)
 
-			if (Number.isNaN(index)) {
-				return Reflect.get(target, name, receiver);
-			}
+      if (Number.isNaN(index)) {
+        return Reflect.get(target, name, receiver)
+      }
 
-			return target[index < 0 ? target.length + index : index];
-		},
-		set(target, name, value, receiver) {
-			if (typeof name !== 'string') {
-				return Reflect.set(target, name, value, receiver);
-			}
+      return target[index < 0 ? target.length + index : index]
+    },
+    set(target, name, value, receiver) {
+      if (typeof name !== 'string') {
+        return Reflect.set(target, name, value, receiver)
+      }
 
-			const index = Number(name);
+      const index = Number(name % target.length)
 
-			if (Number.isNaN(index)) {
-				return Reflect.set(target, name, value, receiver);
-			}
+      if (Number.isNaN(index)) {
+        return Reflect.set(target, name, value, receiver)
+      }
 
-			target[index < 0 ? target.length + index : index] = value;
+      target[index < 0 ? target.length + index : index] = value
 
-			return true;
-		}
-	});
-};
+      return true
+    }
+  })
+}
